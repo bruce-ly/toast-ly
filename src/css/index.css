@@ -1,0 +1,20 @@
+#toast-ly {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#toast-ly.bg {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#toast-ly > p {
+    padding: .4em 1em;
+    border-radius: 4px;
+    background-color: #fff;
+}

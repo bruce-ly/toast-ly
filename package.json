@@ -1,0 +1,38 @@
+{
+  "name": "toast-ly",
+  "version": "0.0.2",
+  "description": "toast is js",
+  "main": "dist/toast.js",
+  "module": "dist/toast.js",
+  "files": [
+    "src",
+    "dist/*.js"
+  ],
+  "scripts": {
+    "build": "webpack --progress --colors --display-error-details --mode development",
+    "dev": "webpack-dev-server --display-modules --progress --colors --display-error-details --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bruce-ly/toast-ly.git"
+  },
+  "keywords": [
+    "toast",
+    "js"
+  ],
+  "author": "Bruce ly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bruce-ly/toast-ly/issues"
+  },
+  "homepage": "https://github.com/bruce-ly/toast-ly#readme",
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.22.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  }
+}
