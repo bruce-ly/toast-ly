@@ -1,6 +1,5 @@
-import './css/index.css'
-import Toast from './js/index.js'
+import './css/index'
+import Toast from './js/index'
 
-export default function toast(text, options) {
-    return new Toast(text, options);
-}
+window.$Toast = Toast;
+export default Toast;
