@@ -1,11 +1,10 @@
 {
   "name": "toast-ly",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "toast is js",
   "main": "dist/toast.js",
   "module": "dist/toast.js",
   "files": [
-    "src",
     "dist/*.js"
   ],
   "scripts": {

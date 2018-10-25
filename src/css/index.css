@@ -1,32 +1,55 @@
-#toast-box-ly {
+#toast-ly {
+    display: none;
     position: fixed;
     top: 0;
     right: 0;
+    bottom: 0;
     left: 0;
     z-index: 999;
-    height: 0;
     overflow: hidden;
 }
 
-#toast-box-ly.show {
-    height: 100vh;
-    transition: all .4s;
-}
-
-#toast-box-ly > div {
-    width: 100%;
-    height: 100%;
+#toast-ly.show, #toast-ly > div {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
-#toast-box-ly > div.bg {
+#toast-ly > div.animation {
+    animation: show .2s forwards;
+}
+
+#toast-ly > div.bg {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-#toast-box-ly p {
+#toast-ly p {
     padding: .4em 1em;
     border-radius: 4px;
+}
+
+#toast-ly p.bg {
     background-color: #fff;
+}
+
+@keyframes show {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        border-radius: 50%;
+    }
+    80% {
+        width: 100vmin;
+        height: 100vmin;
+        border-radius: 50%;
+    }
+    100% {
+        width: 100vw;
+        height: 100vh;
+        opacity: 1;
+        border-radius: 0;
+    }
 }
