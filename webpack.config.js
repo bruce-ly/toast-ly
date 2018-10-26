@@ -1,18 +1,22 @@
-// 基于node的 遵循commonjs规范的
-const webpack = require('webpack');
-const path = require('path'); // node的模块
+const webpack = require('webpack')
+const path = require('path')
+
+function resolve(dir) {
+    return path.resolve(__dirname, dir)
+}
+
 module.exports = {
-    // mode: 'development', // 可以更改模式
-    entry: './src/main.js', // 入口
+    mode: process.env.NODE_ENV, // 可以更改模式
+    entry: './src/test.js', // 入口
     output: { // 出口
-        filename: 'toast.js',
-        path: path.resolve(__dirname, './dist'), // 这个路径必须是绝对路径
+        filename: 'test.js',
+        path: resolve('test'), // 这个路径必须是绝对路径
     },
     devServer: { // 开发服务器
-        contentBase: path.resolve(__dirname, './'),
+        contentBase: resolve('test'),
         host: 'localhost',
         port: 9193,
-        compress: true, // 服务器压缩
+        // compress: true, // 服务器压缩
         // open: true, // 自动打开浏览器
         // hot: true, // 热更新
     },
@@ -21,31 +25,42 @@ module.exports = {
             {
                 test: /\.js$/,
                 use: 'babel-loader',
-                include: path.join(__dirname, './src'), // 只转化src目录下的js
+                include: resolve('src'), // 只转化src目录下的js
                 exclude: /node_modules/  // 排除掉node_modules，优化打包速度
             },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader', 'postcss-loader'], // 从右往左写，webpack特性
-                include: path.join(__dirname, './src'),
+                include: resolve('src'),
                 exclude: /node_modules/,
             },
             {
                 test: /\.(jpg|png|gif|svg)$/,
                 use: 'url-loader',
-                include: path.join(__dirname, './src'),
+                include: resolve('src'),
                 exclude: /node_modules/,
             },
         ]
     },
     plugins: [ // 插件的配置
-        new webpack.BannerPlugin('版权所有，翻版必究 \n https://github.com/bruce-ly/toast-ly'),
-        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.BannerPlugin('https://github.com/bruce-ly/toast-ly \n' + Date().toString()),
     ],
-    resolve: { // 配置解析
-        extensions: ['.js', '.css', '.json'], // 省略后缀
-        alias: { // 别名
-            // '@': path.resolve('src'),
-        },
-    },
-};
+    // resolve: { // 配置解析
+    //     extensions: ['.js', '.css', '.json'], // 省略后缀
+    //     alias: { // 别名
+    //         '@': resolve('src'),
+    //     },
+    // },
+}
+
+if (process.env.NODE_ENV === 'production') {
+    module.exports.entry = './src/main.js'
+    module.exports.output = {
+        filename: 'toast.js',
+        path: resolve('dist'),
+        library: 'Toast', // 指定类库名,主要用于直接引用的方式(比如使用script 标签)
+        libraryExport: "default", // 对外暴露default属性，就可以直接调用default里的属性
+        libraryTarget: 'umd', // 定义打包方式Universal Module Definition,同时支持在CommonJS、AMD和全局变量使用,
+        globalObject: 'this', // 定义全局变量,兼容node和浏览器运行，避免出现"window is not defined"的情况
+    }
+}

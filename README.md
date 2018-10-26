@@ -1,4 +1,5 @@
 # toast-ly
+
 ````
 let $toast = new $Toast({
     boxBgClass: '',
@@ -8,4 +9,8 @@ let $toast = new $Toast({
     duration: 1000
 });
 $toast.open('test');
+````
 
+##github
+
+###https://github.com/bruce-ly/toast-ly

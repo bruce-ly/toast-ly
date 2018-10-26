@@ -1,5 +1,4 @@
-import './css/index'
+import './css/index.css'
 import Toast from './js/index'
 
-window.$Toast = Toast;
-export default Toast;
+export default Toast

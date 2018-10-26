@@ -1,6 +1,6 @@
 {
   "name": "toast-ly",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "toast is js",
   "main": "dist/toast.js",
   "module": "dist/toast.js",
@@ -8,8 +8,8 @@
     "dist/*.js"
   ],
   "scripts": {
-    "build": "webpack --progress --colors --display-error-details --mode production",
-    "dev": "webpack-dev-server --display-modules --progress --colors --display-error-details --mode development"
+    "build": "cross-env NODE_ENV=production webpack --progress --colors",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --display-modules --progress --colors --display-error-details"
   },
   "repository": {
     "type": "git",
@@ -26,11 +26,13 @@
   },
   "homepage": "https://github.com/bruce-ly/toast-ly#readme",
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
     "autoprefixer": "^9.3.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
+    "babel-loader": "^8.0.4",
+    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
     "postcss-loader": "^3.0.0",
